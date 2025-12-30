@@ -64,8 +64,23 @@ public class UserServiceImpl  implements UserService
 
 	@Override
 	public String deleteById(int id) {
+		
 		// TODO Auto-generated method stub
-		return null;
+	     
+		Optional<UserInfo> byId = repo.findById(id);
+		
+		if(byId.isPresent())
+		{
+			repo.deleteById(id);
+			
+			return "Given user deleteddd ";
+		}
+		else
+		{
+			return id+"Given id not foundd...";
+		}
+		
+		
 	}
 
 	@Override
